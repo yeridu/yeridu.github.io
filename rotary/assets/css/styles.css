@@ -1418,6 +1418,123 @@ img {
 
 .lede--center { margin-left: auto; margin-right: auto; text-align: center; max-width: 78ch; }
 
+/* --- Slide 3: the seven findings, one per module --- */
+.finding-list { display: flex; flex-direction: column; }
+
+.finding {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.finding:last-child { border-bottom: none; }
+
+.finding-mod { font-size: 0.85rem; line-height: 1.3; color: var(--black); font-weight: 600; }
+
+.finding-stat {
+  font-size: 0.85rem;
+  line-height: 1.3;
+  color: #555;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.finding-stat b { color: var(--orange); font-weight: 800; }
+
+/* --- Slide 10: who delivers the curriculum, year one against year two --- */
+.delivery {
+  width: 100%;
+  max-width: calc(1060px * var(--fit, 1));
+  margin-top: 20px;
+  background: var(--gray-bg);
+  border-radius: 14px;
+  padding: 16px 22px 14px;
+  text-align: left;
+}
+
+.delivery-head {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+
+.delivery-row { display: flex; align-items: center; gap: 18px; }
+
+.delivery-step {
+  flex: 1;
+  background: var(--white);
+  border-radius: 10px;
+  padding: 12px 16px;
+  border-left: 4px solid var(--orange);
+}
+
+.delivery-step p { font-size: 0.9rem; line-height: 1.45; color: #444; }
+.delivery-step p strong { color: var(--black); }
+
+.delivery-yr {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gray);
+  margin-bottom: 4px;
+}
+
+.delivery-arrow { font-size: 1.4rem; color: var(--orange); flex-shrink: 0; }
+.delivery .src { margin-top: 10px; }
+
+/* --- Slide 5: the ten elements alone, using the full width --- */
+.works-elements--wide {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  align-items: start;
+  width: 100%;
+  max-width: calc(1160px * var(--fit, 1));
+  margin-top: 6px;
+}
+
+.works-elements--wide .elem-name { font-size: 0.92rem; }
+.works-elements--wide .elem-us { font-size: 0.84rem; }
+.works-elements--wide .elem-list li { padding: 7px 0; }
+
+/* --- Narration button (slide 8) --- */
+.narrate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--black);
+  cursor: pointer;
+  margin-bottom: 4px;
+  transition: border-color 200ms var(--ease), color 200ms var(--ease);
+}
+
+.narrate-btn:hover { border-color: var(--orange); color: var(--orange); }
+.narrate-btn.is-playing { border-color: var(--orange); color: var(--orange); }
+.narrate-icon { width: 17px; height: 17px; flex-shrink: 0; }
+
+@media (max-width: 900px) {
+  .delivery-row { flex-direction: column; align-items: stretch; }
+  .delivery-arrow { transform: rotate(90deg); align-self: center; }
+  .works-elements--wide { grid-template-columns: 1fr; }
+  .finding { grid-template-columns: 1fr; }
+  .finding-stat { text-align: left; }
+}
+
 /* --- Keep the layout edge-to-edge when a slide has been scaled down --------
    deck.js sets --fit on a slide it had to shrink to fit the screen. Scaling
    the max-widths by the same factor stops the wide blocks from collapsing

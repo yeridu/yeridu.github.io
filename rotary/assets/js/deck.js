@@ -12,11 +12,43 @@
     slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
     if (!slides.length) return;
     hydrateVideos();
+    setupNarration();
     setupNavigation();
     setupKeyboard();
     setupRefit();
     protectPhotos();
     goToSlide(0);
+  }
+
+  /* --- Narration buttons: one short recorded explanation per slide that
+     needs one. Click to play, click again to stop; leaving the slide stops
+     it too, so nothing keeps talking over the speaker. --- */
+  var narrator = null;
+  var narratorBtn = null;
+
+  function stopNarration() {
+    if (narrator) { narrator.pause(); narrator = null; }
+    if (narratorBtn) { narratorBtn.classList.remove("is-playing"); narratorBtn = null; }
+  }
+
+  function setupNarration() {
+    var buttons = document.querySelectorAll(".narrate-btn");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].addEventListener("click", function () {
+        var btn = this;
+        var wasPlaying = (narratorBtn === btn);
+        stopNarration();
+        if (wasPlaying) return;
+        var audio = new Audio(btn.getAttribute("data-audio"));
+        audio.addEventListener("ended", stopNarration);
+        // A missing or unplayable file should not leave the button lit.
+        audio.addEventListener("error", stopNarration);
+        narrator = audio;
+        narratorBtn = btn;
+        btn.classList.add("is-playing");
+        audio.play().catch(stopNarration);
+      });
+    }
   }
 
   /* --- Fit the slide to the screen ----------------------------------------
@@ -121,6 +153,7 @@
   function goToSlide(index) {
     if (index < 0 || index >= slides.length) return;
     pauseAllVideos();
+    stopNarration();
     slides[currentIndex].classList.remove("active");
     currentIndex = index;
     slides[currentIndex].classList.add("active");

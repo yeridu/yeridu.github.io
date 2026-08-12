@@ -14,8 +14,69 @@
     hydrateVideos();
     setupNavigation();
     setupKeyboard();
+    setupRefit();
     protectPhotos();
     goToSlide(0);
+  }
+
+  /* --- Fit the slide to the screen ----------------------------------------
+     Meeting-room projectors are short (768px is common) and some slides in
+     this deck are dense. Rather than let a line disappear below the fold or
+     force the speaker to scroll mid-sentence, shrink the slide until it fits.
+     Zoom is used, not transform: it re-runs layout, so text stays crisp and
+     line breaks stay sensible. The floor keeps text readable; below it the
+     slide scrolls as before. */
+  /* Height of the visible content, in real screen pixels. scrollHeight cannot
+     be used here: the slide centres its children with flexbox, and a
+     centre-aligned overflow is reported as no overflow at all. Measuring the
+     children's own boxes is the only reading that matches what the room sees. */
+  function contentHeight(slide) {
+    var kids = slide.children;
+    var top = Infinity;
+    var bottom = -Infinity;
+    for (var i = 0; i < kids.length; i++) {
+      if (kids[i].classList.contains("speaker-note")) continue;
+      var r = kids[i].getBoundingClientRect();
+      if (!r.height && !r.width) continue;
+      if (r.top < top) top = r.top;
+      if (r.bottom > bottom) bottom = r.bottom;
+    }
+    return isFinite(top) ? bottom - top : 0;
+  }
+
+  function fitSlide(slide) {
+    if (!slide) return;
+    slide.style.zoom = "";
+    slide.style.removeProperty("--fit");
+
+    var zoom = 1;
+    for (var pass = 0; pass < 6; pass++) {
+      var cs = window.getComputedStyle(slide);
+      // Padding is declared in the slide's own coordinate space, so it has to
+      // be converted back to screen pixels before it can be subtracted.
+      var pad = (parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom)) * zoom;
+      var room = slide.getBoundingClientRect().height - pad;
+      var needed = contentHeight(slide);
+      if (!needed || needed <= room) break;
+      var next = Math.max(0.6, zoom * (room / needed) * 0.99);
+      if (next >= zoom - 0.003) break;
+      zoom = next;
+      slide.style.zoom = zoom;
+      // Zooming out enlarges the slide's own coordinate space, so the fixed
+      // px max-widths on the wide blocks would leave a dead margin down the
+      // side. --fit grows them by the same factor, keeping the layout
+      // edge-to-edge. Zoom only ever decreases here, so --fit only ever grows
+      // and the loop cannot oscillate.
+      slide.style.setProperty("--fit", 1 / zoom);
+    }
+  }
+
+  function setupRefit() {
+    var pending;
+    window.addEventListener("resize", function () {
+      clearTimeout(pending);
+      pending = setTimeout(function () { fitSlide(slides[currentIndex]); }, 120);
+    });
   }
 
   /* --- Video: local file first, public release second, honest message third --- */
@@ -64,6 +125,7 @@
     currentIndex = index;
     slides[currentIndex].classList.add("active");
     slides[currentIndex].scrollTop = 0;
+    fitSlide(slides[currentIndex]);
     updateProgress();
     updateCounter();
     updateNotes();

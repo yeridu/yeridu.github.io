@@ -44,7 +44,8 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 52px 72px 84px;
+  /* The bottom padding reserves the strip the floating navigation sits in. */
+  padding: 52px 72px 120px;
   background: var(--white);
   color: var(--black);
   opacity: 0;
@@ -71,7 +72,7 @@ body {
 .slide--left {
   align-items: flex-start;
   text-align: left;
-  padding: 44px 64px 84px;
+  padding: 44px 64px 120px;
 }
 
 .slide--left .accent { margin-left: 0; }
@@ -1023,4 +1024,459 @@ img {
     overflow: visible;
   }
   .nav, .progress-bar, .notes-panel, .kb-hint { display: none; }
+}
+
+/* ============================================================
+   Additions for the revised deck (13 slides)
+   ============================================================ */
+
+/* --- Title slide: approvals list inside the fact panel --- */
+.approvals { list-style: none; padding: 0; margin: 0; }
+
+.approvals li {
+  font-size: 0.86rem;
+  line-height: 1.4;
+  padding: 3px 0 3px 13px;
+  position: relative;
+  color: #444;
+}
+
+.approvals li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 10px;
+  width: 5px; height: 5px;
+  background: var(--orange);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+.approvals li strong { color: var(--black); font-weight: 600; }
+
+/* --- Title slide: the four-phase strip --- */
+.phases {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  width: 100%;
+  max-width: 1120px;
+  margin-top: 26px;
+}
+
+.phase {
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-top: 4px solid var(--gray-light);
+  border-radius: 12px;
+  padding: 12px 14px 11px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.phase-n {
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gray);
+}
+
+.phase-t { font-size: 0.95rem; font-weight: 700; color: var(--black); line-height: 1.2; }
+.phase-d { font-size: 0.78rem; line-height: 1.4; color: #666; }
+
+.phase-s {
+  margin-top: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gray);
+}
+
+.phase--done { border-top-color: var(--green); background: var(--gray-bg); }
+.phase--done .phase-s { color: var(--green); }
+.phase--now  { border-top-color: var(--orange); background: rgba(232,99,10,0.06); }
+.phase--now .phase-s { color: var(--orange); }
+
+/* --- Problem slide: the linked chain of three --- */
+.chain {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1.15fr;
+  gap: 10px;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1140px;
+  margin-top: 10px;
+}
+
+.chain-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 96px;
+  padding: 0 2px;
+}
+
+.chain-arrow { font-size: 1.5rem; color: var(--orange); line-height: 1; }
+
+.chain-text {
+  font-size: 0.7rem;
+  line-height: 1.3;
+  color: var(--gray);
+  text-align: center;
+  font-style: italic;
+}
+
+.card--accent { background: rgba(232,99,10,0.07); }
+
+.card-list--stat li { font-size: 0.9rem; }
+.card-list--stat li strong { color: var(--black); }
+.card-list--stat li b { color: var(--orange); font-weight: 800; font-variant-numeric: tabular-nums; }
+
+/* --- What-works slide: video beside the ten elements --- */
+.works {
+  display: grid;
+  grid-template-columns: 0.82fr 1.35fr;
+  gap: 30px;
+  width: 100%;
+  max-width: 1160px;
+  margin-top: 8px;
+  align-items: start;
+}
+
+.video-wrap--panel { width: 100%; }
+
+.works-caption {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: #777;
+}
+
+.works-elements { display: flex; flex-direction: column; gap: 12px; }
+
+.elem-group {
+  background: var(--gray-bg);
+  border-radius: 12px;
+  padding: 12px 16px 10px;
+}
+
+.elem-head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--black);
+  margin-bottom: 6px;
+}
+
+.elem-head .card-badge { width: 24px; height: 24px; font-size: 0.7rem; }
+
+.elem-list { list-style: decimal; padding-left: 20px; margin: 0; }
+
+.elem-list li {
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  color: var(--gray);
+  font-size: 0.76rem;
+}
+
+.elem-list li:last-child { border-bottom: none; }
+
+.elem-name {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--black);
+}
+
+.elem-us {
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: #6a6a6a;
+  margin-top: 1px;
+}
+
+/* --- Rotary bridge: three columns with the evidence in the middle --- */
+.bridge-row--3 { grid-template-columns: 0.92fr 1.6fr 0.98fr; gap: 22px; font-size: 0.9rem; }
+
+.bridge-ev { color: #555; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+
+.why-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  width: 100%;
+  max-width: 1080px;
+  margin-top: 16px;
+}
+
+.why {
+  background: var(--gray-bg);
+  border-radius: 12px;
+  padding: 14px 18px;
+  border-left: 4px solid var(--gray-light);
+}
+
+.why--flag { border-left-color: var(--orange); }
+
+.why-head {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--orange);
+  margin-bottom: 7px;
+}
+
+.why p { font-size: 0.82rem; line-height: 1.5; color: #444; }
+
+/* --- Phase 1: enrolment to date --- */
+.enrol {
+  width: 100%;
+  max-width: 1000px;
+  margin-top: 6px;
+  border-top: 2px solid var(--black);
+}
+
+.enrol-row {
+  display: grid;
+  grid-template-columns: 1.15fr 2.3fr 0.85fr;
+  gap: 20px;
+  align-items: center;
+  padding: 9px 4px;
+  border-bottom: 1px solid var(--gray-light);
+  text-align: left;
+}
+
+.enrol-row--head {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: var(--gray);
+  padding: 7px 4px;
+}
+
+.enrol-l { font-size: 0.98rem; color: var(--black); }
+
+.enrol-bar {
+  display: block;
+  height: 12px;
+  background: var(--gray-light);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.enrol-bar i {
+  display: block;
+  height: 100%;
+  background: var(--orange);
+  border-radius: 999px;
+}
+
+.enrol-n {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--orange);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.enrol-n em {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 600;
+  font-style: normal;
+  color: var(--gray);
+}
+
+.enrol-row--met .enrol-bar i { background: var(--green); }
+.enrol-row--met .enrol-n { color: var(--green); }
+
+.enrol-row--total { border-bottom: none; border-top: 2px solid var(--black); }
+.enrol-row--total .enrol-l { font-weight: 700; }
+.enrol-row--total .enrol-bar i { background: var(--black); }
+.enrol-row--total .enrol-n { color: var(--black); }
+
+/* --- Progression criteria: how the score is made --- */
+.crit {
+  display: grid;
+  grid-template-columns: 1.28fr 1fr;
+  gap: 28px;
+  width: 100%;
+  max-width: 1140px;
+  margin-top: 8px;
+  align-items: start;
+}
+
+.calc { text-align: left; }
+
+.calc-step {
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.calc-step:last-child { border-bottom: none; }
+.calc-step strong { display: block; font-size: 0.95rem; color: var(--black); }
+
+.calc-n {
+  flex-shrink: 0;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: var(--white);
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calc-note { font-size: 0.82rem; line-height: 1.5; color: #555; margin-top: 5px; }
+.calc-note em { color: var(--black); font-style: normal; font-weight: 600; }
+
+.scale { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 7px; }
+
+.scale span {
+  font-size: 0.72rem;
+  color: #555;
+  background: var(--gray-bg);
+  border-radius: 999px;
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+
+.example {
+  margin-top: 8px;
+  background: var(--gray-bg);
+  border-radius: 10px;
+  padding: 11px 14px;
+}
+
+.example-head {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--orange);
+  margin-bottom: 7px;
+}
+
+.ex-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  align-items: baseline;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: #444;
+}
+
+.ex-v { font-weight: 700; color: var(--black); white-space: nowrap; font-size: 0.78rem; }
+
+.ex-sum {
+  margin-top: 8px;
+  font-size: 0.88rem;
+  color: var(--black);
+  font-variant-numeric: tabular-nums;
+}
+
+.ex-sum b { color: var(--orange); font-size: 1.05rem; }
+
+.traffic--stack { grid-template-columns: 1fr; gap: 12px; margin-top: 0; }
+.traffic--stack .traffic-card { padding: 13px 16px; }
+.traffic--stack .traffic-card p { font-size: 0.86rem; line-height: 1.45; }
+.traffic--stack .traffic-card p b { color: var(--black); }
+
+/* --- Seven-module slide: flag the module opened next --- */
+.card-list li.is-next { color: var(--orange); font-weight: 700; }
+
+.handoff {
+  margin-top: 18px;
+  max-width: 88ch;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: #444;
+}
+
+.handoff strong { color: var(--orange); }
+
+.lede--center { margin-left: auto; margin-right: auto; text-align: center; max-width: 78ch; }
+
+/* --- Keep the layout edge-to-edge when a slide has been scaled down --------
+   deck.js sets --fit on a slide it had to shrink to fit the screen. Scaling
+   the max-widths by the same factor stops the wide blocks from collapsing
+   into a narrow column with dead space beside them. At full size --fit is
+   absent and every value below is exactly what it was before. */
+.title-layout  { max-width: calc(1120px * var(--fit, 1)); }
+.phases        { max-width: calc(1120px * var(--fit, 1)); }
+.profile-layout{ max-width: calc(1100px * var(--fit, 1)); }
+.two-col       { max-width: calc(1100px * var(--fit, 1)); }
+.chain         { max-width: calc(1140px * var(--fit, 1)); }
+.works         { max-width: calc(1160px * var(--fit, 1)); }
+.crit          { max-width: calc(1140px * var(--fit, 1)); }
+.grid-3        { max-width: calc(1060px * var(--fit, 1)); }
+.spec-row      { max-width: calc(1060px * var(--fit, 1)); }
+.bridge        { max-width: calc(1080px * var(--fit, 1)); }
+.why-row       { max-width: calc(1080px * var(--fit, 1)); }
+.traffic       { max-width: calc(1080px * var(--fit, 1)); }
+.enrol         { max-width: calc(1000px * var(--fit, 1)); }
+.who-row       { max-width: calc(1000px * var(--fit, 1)); }
+.src-list      { max-width: calc(1080px * var(--fit, 1)); }
+.video-wrap    { width: min(88%, calc(820px * var(--fit, 1))); }
+.slide-heading { max-width: calc(24ch * var(--fit, 1)); }
+.slide--left .slide-heading { max-width: calc(30ch * var(--fit, 1)); }
+.lede          { max-width: calc(60ch * var(--fit, 1)); }
+.lede--center  { max-width: calc(78ch * var(--fit, 1)); }
+.handoff       { max-width: calc(88ch * var(--fit, 1)); }
+.pull--wide    { max-width: calc(92ch * var(--fit, 1)); }
+.src           { max-width: calc(90ch * var(--fit, 1)); }
+.close-body    { max-width: calc(52ch * var(--fit, 1)); }
+
+/* --- Responsive behaviour for the new blocks --- */
+@media (max-height: 800px) {
+  .phases { margin-top: 18px; }
+  .phase { padding: 10px 12px 9px; }
+  .elem-list li { padding: 4px 0; }
+}
+
+@media (max-height: 730px) {
+  .phases { margin-top: 14px; gap: 9px; }
+  .phase-d { font-size: 0.73rem; }
+  .chain { gap: 7px; }
+  .chain-link { width: 78px; }
+  .works { gap: 22px; }
+  .elem-group { padding: 9px 13px 8px; }
+  .elem-name { font-size: 0.8rem; }
+  .elem-us { font-size: 0.73rem; }
+  .enrol-row { padding: 7px 4px; }
+  .crit { gap: 22px; }
+  .ex-row { font-size: 0.75rem; }
+}
+
+@media (max-width: 900px) {
+  .phases,
+  .why-row,
+  .works,
+  .crit { grid-template-columns: 1fr; }
+  .chain { grid-template-columns: 1fr; }
+  .chain-link { width: 100%; flex-direction: row; gap: 10px; padding: 4px 0; }
+  .chain-arrow { transform: rotate(90deg); }
+  .enrol-row { grid-template-columns: 1fr auto; }
+  .enrol-bar { grid-column: 1 / -1; }
 }

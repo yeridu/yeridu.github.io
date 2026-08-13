@@ -1418,6 +1418,306 @@ img {
 
 .lede--center { margin-left: auto; margin-right: auto; text-align: center; max-width: 78ch; }
 
+/* ============================================================
+   Round 3: read it from six metres
+   The room is deep, so the floor for body text is raised and the
+   smallest classes are pulled up with it. Slides were cut rather
+   than shrunk: nothing here fights the auto-fit.
+   ============================================================ */
+
+.acronym {
+  font-size: 1.02rem;
+  line-height: 1.4;
+  color: #555;
+  margin: 2px 0 4px;
+  letter-spacing: 0.01em;
+}
+
+.acronym strong { color: var(--orange); font-weight: 800; }
+
+.slide-label { font-size: 0.92rem; line-height: 1.5; }
+.src { font-size: 0.88rem; color: #8a8a8a; }
+.card-list li { font-size: 1.02rem; }
+.pull { font-size: 1.18rem; }
+.traffic-card p { font-size: 1.02rem; }
+.fact-row dd { font-size: 1rem; }
+.approvals li { font-size: 0.94rem; }
+.phase-d { font-size: 0.88rem; }
+.phase-t { font-size: 1.05rem; }
+.ask-body { font-size: 1.06rem; }
+
+/* --- Slide 3: what this club built, beside what THRIVE adds --- */
+.bridge2 {
+  width: 100%;
+  max-width: calc(1120px * var(--fit, 1));
+  margin-top: 14px;
+  border-top: 2px solid var(--black);
+}
+
+.bridge2-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding: 13px 4px;
+  border-bottom: 1px solid var(--gray-light);
+  align-items: baseline;
+}
+
+.bridge2-row--head {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gray);
+  padding: 9px 4px;
+}
+
+.bridge2-a { font-size: 1.04rem; line-height: 1.45; color: #444; }
+.bridge2-a strong { color: var(--black); }
+.bridge2-b { font-size: 1.04rem; line-height: 1.45; color: var(--black); font-weight: 500; }
+
+.narrate-btn--lead {
+  align-self: flex-start;
+  margin: 4px 0 6px;
+  font-size: 0.98rem;
+  padding: 11px 22px;
+  border-color: var(--orange);
+  color: var(--orange);
+  background: rgba(232,99,10,0.05);
+}
+
+/* --- Slide 4: the findings, ranked, with a bar for scale --- */
+.findings {
+  width: 100%;
+  max-width: calc(1120px * var(--fit, 1));
+  margin-top: 10px;
+}
+
+.fx {
+  display: grid;
+  grid-template-columns: 5.2rem 8rem 1fr auto;
+  gap: 18px;
+  align-items: center;
+  padding: 9px 4px;
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.fx:last-child { border-bottom: none; }
+
+.fx-n {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--orange);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  line-height: 1;
+}
+
+.fx-bar { display: block; height: 11px; background: var(--gray-light); border-radius: 999px; overflow: hidden; }
+.fx-bar i { display: block; height: 100%; background: var(--orange); border-radius: 999px; }
+
+.fx-t { font-size: 1.1rem; line-height: 1.35; color: var(--black); text-align: left; }
+
+.fx-m {
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gray);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.fx--flag .fx-n, .fx--flag .fx-bar i { background: none; color: var(--red); }
+.fx--flag .fx-bar i { background: var(--red); }
+
+.compare {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  width: 100%;
+  max-width: calc(1120px * var(--fit, 1));
+  margin-top: 16px;
+  background: var(--gray-bg);
+  border-left: 5px solid var(--black);
+  border-radius: 0 12px 12px 0;
+  padding: 14px 20px;
+  text-align: left;
+}
+
+.compare-lbl {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gray);
+  white-space: nowrap;
+}
+
+.compare p { font-size: 1.1rem; line-height: 1.45; color: var(--black); }
+.compare strong { color: var(--orange); font-weight: 800; }
+
+/* --- Slide 6: Rotary causes as blocks, not a table --- */
+.areas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: calc(1080px * var(--fit, 1));
+  margin-top: 10px;
+}
+
+.area {
+  background: var(--gray-bg);
+  border-radius: 14px;
+  padding: 16px 20px 14px;
+  border-top: 5px solid var(--orange);
+  text-align: left;
+}
+
+.area-head {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--orange);
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+
+.area-mods { list-style: none; padding: 0; }
+
+.area-mods li {
+  font-size: 1.02rem;
+  line-height: 1.35;
+  color: var(--black);
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+
+.area-mods li:last-child { border-bottom: none; }
+
+.area-mods em {
+  display: block;
+  font-style: normal;
+  font-size: 0.86rem;
+  color: #777;
+  margin-top: 1px;
+}
+
+.areas-out {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  width: 100%;
+  max-width: calc(1080px * var(--fit, 1));
+  margin-top: 14px;
+  padding: 12px 18px;
+  background: var(--white);
+  border: 1px dashed var(--gray-light);
+  border-radius: 12px;
+  text-align: left;
+}
+
+.areas-out-lbl {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gray);
+  white-space: nowrap;
+}
+
+.areas-out p { font-size: 0.98rem; line-height: 1.45; color: #555; }
+
+/* --- Slide 7: the conditions, as short lines rather than a paragraph --- */
+.notes-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 14px;
+  width: 100%;
+  max-width: calc(1000px * var(--fit, 1));
+  text-align: left;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 28px;
+}
+
+.notes-list li {
+  font-size: 0.94rem;
+  line-height: 1.4;
+  color: #666;
+  padding-left: 16px;
+  position: relative;
+}
+
+.notes-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 9px;
+  width: 5px; height: 5px;
+  background: var(--gray);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+/* --- Slide 8: the scale, and the three verdicts --- */
+.scale-strip { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 16px; justify-content: flex-start; }
+
+.scale-strip span {
+  font-size: 0.9rem;
+  color: #555;
+  background: var(--gray-bg);
+  border-radius: 999px;
+  padding: 6px 14px;
+  white-space: nowrap;
+}
+
+.traffic-big {
+  font-size: 1.5rem !important;
+  font-weight: 800;
+  color: var(--black) !important;
+  margin-bottom: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.ask-list--big .ask { padding: 18px 0; }
+.ask-list--big .ask-n { font-size: 1.3rem; width: 40px; }
+
+/* --- Slide 13: acknowledgements --- */
+.thanks {
+  width: 100%;
+  max-width: calc(760px * var(--fit, 1));
+  margin: 6px auto 22px;
+  text-align: left;
+}
+
+.thanks-lbl {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--orange);
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.thanks-list { list-style: none; padding: 0; }
+
+.thanks-list li {
+  padding: 9px 0;
+  border-bottom: 1px solid var(--gray-light);
+  text-align: center;
+}
+
+.thanks-list li:last-child { border-bottom: none; }
+.thanks-list strong { display: block; font-size: 1.08rem; color: var(--black); }
+.thanks-list span { font-size: 0.9rem; color: #777; }
+
+@media (max-width: 900px) {
+  .bridge2-row, .areas, .notes-list { grid-template-columns: 1fr; }
+  .fx { grid-template-columns: 4.5rem 1fr; }
+  .fx-bar, .fx-m { display: none; }
+}
+
 /* --- Slide 3: the seven findings, one per module --- */
 .finding-list { display: flex; flex-direction: column; }
 

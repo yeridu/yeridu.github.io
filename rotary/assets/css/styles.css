@@ -1446,6 +1446,141 @@ img {
 .phase-t { font-size: 1.05rem; }
 .ask-body { font-size: 1.06rem; }
 
+/* --- Slide 3: Rotary's own mission, then the club's work under it --- */
+.mission {
+  width: 100%;
+  max-width: calc(1080px * var(--fit, 1));
+  margin: 6px 0 16px;
+  padding: 14px 20px;
+  background: var(--gray-bg);
+  border-left: 5px solid var(--orange);
+  border-radius: 0 12px 12px 0;
+  text-align: left;
+}
+
+.mission-lbl {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gray);
+  margin-bottom: 6px;
+}
+
+.mission p { font-size: 1.12rem; line-height: 1.45; color: var(--black); }
+.mission strong { color: var(--orange); font-weight: 700; }
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  width: 100%;
+  max-width: calc(1080px * var(--fit, 1));
+  text-align: left;
+}
+
+.pillar { border-top: 4px solid var(--gray-light); padding-top: 12px; }
+
+.pillar-head {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--orange);
+  margin-bottom: 7px;
+}
+
+.pillar p { font-size: 1rem; line-height: 1.45; color: #444; }
+
+/* --- Slide 5: what the numbers alone do not show --- */
+.insights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 26px;
+  width: 100%;
+  max-width: calc(1140px * var(--fit, 1));
+  margin-top: 8px;
+}
+
+.insight {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: start;
+  background: var(--gray-bg);
+  border-radius: 12px;
+  padding: 14px 18px;
+}
+
+.insight--flag { background: rgba(232,99,10,0.07); }
+
+.insight-n {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: var(--white);
+  font-size: 0.92rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.insight-h {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.25;
+  margin-bottom: 5px;
+}
+
+.insight p { font-size: 0.98rem; line-height: 1.4; color: #444; }
+.insight p strong { color: var(--orange); font-weight: 800; }
+
+.insight-so {
+  margin-top: 5px;
+  font-size: 0.92rem !important;
+  color: #777 !important;
+  font-style: italic;
+}
+
+/* --- Slide 12: gratitude --- */
+.grat {
+  width: 100%;
+  max-width: calc(1040px * var(--fit, 1));
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.grat-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: baseline;
+  background: var(--gray-bg);
+  border-radius: 12px;
+  padding: 16px 22px;
+  text-align: left;
+}
+
+.grat-item--warm { background: rgba(232,99,10,0.08); }
+
+.grat-n {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--orange);
+  font-variant-numeric: tabular-nums;
+}
+
+.grat-item p { font-size: 1.06rem; line-height: 1.5; color: #444; }
+.grat-item p strong { color: var(--black); }
+
+@media (max-width: 900px) {
+  .pillars, .insights { grid-template-columns: 1fr; }
+}
+
 /* --- Slide 3: what this club built, beside what THRIVE adds --- */
 .bridge2 {
   width: 100%;

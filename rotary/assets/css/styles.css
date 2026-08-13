@@ -1506,6 +1506,228 @@ img {
 
 .pillar p { font-size: 1rem; line-height: 1.45; color: #444; }
 
+/* ============================================================
+   Slides 5 and 6: the findings as pictures
+   Every chart is plain CSS so it renders offline, scales with
+   the auto-fit, and needs no plotting library.
+   ============================================================ */
+.viz2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 34px;
+  width: 100%;
+  max-width: calc(1160px * var(--fit, 1));
+  margin-top: 6px;
+  align-items: start;
+}
+
+.viz { text-align: left; }
+
+.viz-h {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.viz-h strong { color: var(--orange); }
+
+.viz-sub {
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gray);
+  margin: 16px 0 8px;
+}
+
+.viz-note {
+  margin-top: 12px;
+  font-size: 0.94rem;
+  line-height: 1.45;
+  color: #666;
+}
+
+/* 27 dots, 9 of them filled */
+.dotgrid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 7px;
+  max-width: 300px;
+}
+
+.dot {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--gray-light);
+}
+
+.dot--on { background: var(--orange); }
+
+.viz-key { display: flex; gap: 16px; margin-top: 10px; }
+
+.key {
+  font-size: 0.82rem;
+  color: #777;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.key::before {
+  content: "";
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: var(--gray-light);
+}
+
+.key--on::before { background: var(--orange); }
+
+/* observed against the chance benchmark */
+.cmp { display: flex; flex-direction: column; gap: 8px; }
+
+.cmp-row {
+  display: grid;
+  grid-template-columns: 11rem 1fr 3rem;
+  gap: 12px;
+  align-items: center;
+}
+
+.cmp-l { font-size: 0.92rem; color: var(--black); }
+.cmp-row--muted .cmp-l { color: #888; }
+
+.cmp-bar { height: 20px; background: var(--gray-light); border-radius: 4px; overflow: hidden; }
+.cmp-bar i { display: block; height: 100%; background: var(--orange); }
+.cmp-row--muted .cmp-bar i { background: #BBBBBB; }
+
+.cmp-v {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--orange);
+  font-variant-numeric: tabular-nums;
+}
+
+.cmp-row--muted .cmp-v { color: #888; }
+
+/* the school split three ways */
+.split { display: flex; height: 46px; border-radius: 8px; overflow: hidden; }
+
+.split-seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.split-seg em {
+  font-style: normal;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--white);
+}
+
+.split-seg--a { background: #E8630A; }
+.split-seg--b { background: #B34A05; }
+.split-seg--c { background: #7A3204; }
+
+.split-key { list-style: none; padding: 0; margin-top: 14px; }
+
+.split-key li {
+  display: grid;
+  grid-template-columns: 13px 1fr;
+  gap: 10px;
+  align-items: start;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #555;
+  padding: 6px 0;
+}
+
+.split-key strong { color: var(--black); }
+
+.sw { width: 13px; height: 13px; border-radius: 3px; margin-top: 4px; }
+.sw--a { background: #E8630A; }
+.sw--b { background: #B34A05; }
+.sw--c { background: #7A3204; }
+
+/* two bars, two different denominators */
+.funnel { display: flex; flex-direction: column; gap: 14px; }
+
+.fn {
+  background: var(--gray-bg);
+  border-radius: 12px;
+  padding: 14px 18px;
+  border-left: 5px solid var(--gray);
+}
+
+.fn--warm { border-left-color: var(--red); background: rgba(198,40,40,0.06); }
+
+.fn-head { font-size: 0.9rem; color: #666; margin-bottom: 8px; }
+.fn-head strong { color: var(--black); }
+
+.fn-bar {
+  position: relative;
+  height: 30px;
+  background: var(--white);
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.fn-bar i { display: block; height: 100%; background: var(--orange); position: absolute; left: 0; top: 0; }
+
+.fn-bar b {
+  position: relative;
+  margin-left: 12px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--white);
+  font-variant-numeric: tabular-nums;
+}
+
+.fn-bar--warm i { background: var(--red); }
+.fn p { margin-top: 7px; font-size: 0.98rem; line-height: 1.4; color: var(--black); }
+
+/* seven planned, four added */
+.blocks { display: flex; flex-direction: column; gap: 16px; }
+
+.blockset {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "n row" "n txt";
+  gap: 4px 14px;
+  align-items: center;
+}
+
+.blockset-n {
+  grid-area: n;
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--orange);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.blockset-n--add { color: #7A3204; }
+.blockset-row { grid-area: row; display: flex; gap: 5px; }
+
+.blk {
+  width: 26px; height: 26px;
+  border-radius: 5px;
+}
+
+.blk--on { background: var(--orange); }
+.blk--add { background: var(--white); border: 2px dashed #7A3204; }
+
+.blockset p { grid-area: txt; font-size: 0.94rem; line-height: 1.35; color: #666; }
+.blockset p strong { color: var(--black); }
+
+@media (max-width: 900px) {
+  .viz2 { grid-template-columns: 1fr; }
+  .cmp-row { grid-template-columns: 8rem 1fr 2.6rem; }
+}
+
 /* --- Slide 5: what the numbers alone do not show --- */
 .insights {
   display: grid;

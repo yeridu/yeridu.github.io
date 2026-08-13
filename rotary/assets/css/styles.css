@@ -1506,6 +1506,55 @@ img {
 
 .pillar p { font-size: 1rem; line-height: 1.45; color: #444; }
 
+/* --- Slide 2: the MICS5 cascade, with the chart doing the work --- */
+.mics {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 30px;
+  width: 100%;
+  max-width: calc(1180px * var(--fit, 1));
+  margin-top: 6px;
+  align-items: stretch;
+}
+
+.mics-fig img {
+  width: 100%;
+  height: auto;
+  align-self: start;
+  border: 1px solid var(--gray-light);
+  border-radius: 10px;
+}
+
+.mics-side { display: flex; flex-direction: column; justify-content: space-between; gap: 12px; }
+
+.mics-block {
+  background: var(--gray-bg);
+  border-radius: 11px;
+  padding: 14px 18px;
+  text-align: left;
+  border-left: 4px solid var(--gray-light);
+}
+
+.mics-block--care { border-left-color: var(--gray); background: var(--white); border: 1px solid var(--gray-light); border-left: 4px solid var(--gray); }
+.mics-block--link { border-left-color: var(--orange); background: rgba(232,99,10,0.07); }
+
+.mics-h {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: var(--orange);
+  margin-bottom: 5px;
+}
+
+.mics-block--care .mics-h { color: var(--gray); }
+.mics-block p { font-size: 1rem; line-height: 1.45; color: #444; }
+.mics-block p strong { color: var(--orange); font-weight: 800; }
+
+@media (max-width: 900px) {
+  .mics { grid-template-columns: 1fr; }
+}
+
 /* ============================================================
    Slides 5 and 6: the findings as pictures
    Every chart is plain CSS so it renders offline, scales with
